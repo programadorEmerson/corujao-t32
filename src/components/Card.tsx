@@ -9,24 +9,18 @@ import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
+import { PostType } from '../types/post';
+
 import { StyledCard } from './styles/card';
 
-export type CardDetailsProps = {
-  title: string;
-  subheader: string;
-  description: string;
-  urlImage: string | undefined;
-  id: number;
-}
-
-const CardDetails: FC<CardDetailsProps> = ({ title, subheader, urlImage, description, id }) => {
+const CardDetails: FC<PostType> = ({ title, subheader, urlImage, description, id }) => {
   const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader title={title} subheader={subheader} />
       <Link style={{
         textDecoration: 'none',
-      }} to={`details/${id}`}>
+      }} to={`/details/${id}`}>
         <StyledCard>
           <Typography variant="body2" color="text.secondary">
             {description}
@@ -37,7 +31,7 @@ const CardDetails: FC<CardDetailsProps> = ({ title, subheader, urlImage, descrip
         <IconButton aria-label="add to favorites">
           <Favorite />
         </IconButton>
-        <IconButton onClick={() => navigate(`details/${id}`)} aria-label="Details">
+        <IconButton onClick={() => navigate(`/details/${id}`)} aria-label="Details">
           <Info />
         </IconButton>
         {urlImage &&
